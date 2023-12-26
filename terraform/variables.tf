@@ -24,3 +24,7 @@ variable "ecs_cluster_name" {
 variable "ecs_service_name" {
   description = "ECS service name"
 }
+
+variable "ecr_repository_name" {
+  description = "ECR repository name"
+}

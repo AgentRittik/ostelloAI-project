@@ -3,7 +3,7 @@ module "Nestjs_app_repository" {
   source  = "terraform-aws-modules/ecr/aws"
   version = "1.6.0"
 
-  repository_name                 = "ostello-nestjs-project"
+  repository_name                 = var.ecr_repository_name
   repository_type                 = "private"
   repository_image_tag_mutability = "IMMUTABLE"
   create_lifecycle_policy         = true
