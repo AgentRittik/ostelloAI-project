@@ -8,7 +8,7 @@ export class BookService {
     //add books
     addBookService(book : Book) : string {
         this.book.push(book);
-        return 'Book added successfully';
+        return 'Book added successfully>>>';
     }
     //get all books
     getAllBooksService() : Book[] {
