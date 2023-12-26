@@ -39,8 +39,8 @@ resource "aws_iam_access_key" "github_actions_user_access_key" {
 resource "aws_iam_policy" "github_actions_user_access_policy" {
   name = "github-actions-user-access-policy"
   depends_on = [
-    module.Nestjs_app_repository,
-    aws_ecs_service.Nestjs_app_service,
+    module.nestjs_app_repository,
+    aws_ecs_service.nestjs_app_service,
     aws_iam_role.ecs_task_execution_role
   ]
 
@@ -57,7 +57,7 @@ resource "aws_iam_policy" "github_actions_user_access_policy" {
           "ecr:BatchCheckLayerAvailability",
           "ecr:PutImage"
         ],
-        Resource = [module.Nestjs_app_repository.repository_arn]
+        Resource = [module.nestjs_app_repository.repository_arn]
       },
       {
         Effect = "Allow",
@@ -76,7 +76,7 @@ resource "aws_iam_policy" "github_actions_user_access_policy" {
         ],
         Resource = [
           "*",
-          aws_ecs_service.Nestjs_app_service.id
+          aws_ecs_service.nestjs_app_service.id
         ]
       },
       {

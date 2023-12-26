@@ -1,9 +1,9 @@
 # VPC
-module "Nestjs_app_vpc" {
+module "nestjs_app_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.1.2"
 
-  name = "Nestjs-app-vpc"
+  name = "nestjs-app-vpc"
   cidr = "10.0.0.0/16"
 
   azs                     = ["eu-west-1a"]

@@ -1,5 +1,5 @@
 
-module "Nestjs_app_repository" {
+module "nestjs_app_repository" {
   source  = "terraform-aws-modules/ecr/aws"
   version = "1.6.0"
 
@@ -44,7 +44,7 @@ resource "aws_ecs_task_definition" "nestjs_app_runner" {
   container_definitions = jsonencode([
     {
       name   = var.ecs_container_name
-      image  = "${module.Nestjs_app_repository.repository_url}:latest"
+      image  = "${module.nestjs_app_repository.repository_url}:latest"
       cpu    = 512
       memory = 1024
       portMappings = [
@@ -60,7 +60,7 @@ resource "aws_ecs_task_definition" "nestjs_app_runner" {
   tags = var.common_tags
 }
 
-resource "aws_ecs_service" "Nestjs_app_service" {
+resource "aws_ecs_service" "nestjs_app_service" {
   name            = var.ecs_service_name
   cluster         = aws_ecs_cluster.nestjs_app_cluster.id
   task_definition = aws_ecs_task_definition.nestjs_app_runner.arn
@@ -68,7 +68,7 @@ resource "aws_ecs_service" "Nestjs_app_service" {
   desired_count   = 1
 
   network_configuration {
-    subnets          = [element(module.Nestjs_app_vpc.public_subnets, 0)]
+    subnets          = [element(module.nestjs_app_vpc.public_subnets, 0)]
     security_groups  = [module.web_access_sg.security_group_id]
     assign_public_ip = true
   }

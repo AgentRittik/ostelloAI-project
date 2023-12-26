@@ -5,7 +5,7 @@ module "web_access_sg" {
   version     = "5.1.0"
   name        = "web-access-sg"
   description = "Security group for web access"
-  vpc_id      = module.Nestjs_app_vpc.vpc_id
+  vpc_id      = module.nestjs_app_vpc.vpc_id
 
 #inbounds rules
   ingress_cidr_blocks = ["0.0.0.0/0"]

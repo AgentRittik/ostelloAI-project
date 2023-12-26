@@ -1,5 +1,5 @@
 output "ecr_repo_url" {
-  value = module.Nestjs_app_repository.repository_url
+  value = module.nestjs_app_repository.repository_url
 }
 
 output "github_actions_user_access_key_id" {
